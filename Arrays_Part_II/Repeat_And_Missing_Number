@@ -1,0 +1,21 @@
+def find_duplicate_and_missing(nums):
+    n = len(nums)
+
+    sum1 = n*(n+1)//2
+    sum_sq1 = n*(n+1)*(2*n+1)//6
+
+    sum2 = sum(nums)
+    sum_sq2 = sum(x*x for x in nums)
+
+    diff = sum1 - sum2
+    sq_diff = sum_sq1 - sum_sq2
+
+    sum_ab = sq_diff//diff
+
+    A = (diff+sum_ab)//2
+    B = A - diff
+
+    return [A,B]
+# Example usage
+arr = [3, 1, 2, 5, 3]
+print(find_duplicate_and_missing(arr))  # Output: [3, 4]
